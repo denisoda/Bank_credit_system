@@ -1,5 +1,0 @@
-/home/ilya/Documents/projects/University/Course/Bank_credit_system/Course/Course/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/home/ilya/Documents/projects/University/Course/Bank_credit_system/Course/Course/bin/Debug/Course.exe.mdb
-/home/ilya/Documents/projects/University/Course/Bank_credit_system/Course/Course/bin/Debug/Course.exe
-/home/ilya/Documents/projects/University/Course/Bank_credit_system/Course/Course/obj/x86/Debug/Course.exe
-/home/ilya/Documents/projects/University/Course/Bank_credit_system/Course/Course/obj/x86/Debug/Course.exe.mdb
