@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Data.SQLite;
 
-namespace Course
+namespace Course_APP
 {
-	public static class DataBase
+    public static class DataBase
 	{	
-		SQLiteConnection DB = new SQLiteConnection (@"DataBase/costumers");
-        SQLiteDataReader reader;
+		static SQLiteConnection DB = new SQLiteConnection (@"Data SourF:\ilyab\Documents\Projects\Course\Course\DataBase\costumers");
+        static SQLiteDataReader reader;
 
 
-        public static void Connnect()
+        static void Connnect()
         {
             DB.Open();
         }
@@ -19,17 +19,46 @@ namespace Course
             DB.Close();
         }
 
-        public static void Add_Client(string Name_First, string Name_Second,string N_Card, int Ballance = 100)
+        ///<summary>
+        ///<para>Adds custumer's data to database</para>
+        ///</summary>
+        public static bool Add_Client(string Name_First, string Name_Second,int Card, int Ballance = 100)
         {
-            SQLiteCommand command = new SQLiteCommand();
-              
-            command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance);";
-            command.Parameters.Add("@Name_First", System.Data.DbType.Int32).Value;
-            command.Parameters.Add("@Name_Second", System.Data.DbType.Int32).Value;
-            command.Parameters.Add("@Name_First", System.Data.DbType.Int32).Value;
-            command.Parameters.Add("@Name_First", System.Data.DbType.Int32).Value;
-        
+            try
+            {
+                using (DB)
+                {
+
+                SQLiteCommand command = new SQLiteCommand();
+
+                
+
+                command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance);";
+                command.Connection = DB;
+                command.Parameters.Add(new SQLiteParameter(@"Name_First", Name_First));
+                command.Parameters.Add(new SQLiteParameter(@"Name_Second", Name_First));
+                command.Parameters.Add(new SQLiteParameter(@"Card", Card));
+                command.Parameters.Add(new SQLiteParameter(@"Ballance", Ballance));
+
+                    DB.Open();
+
+
+                //    command.Parameters.Add(@"Name_First", System.Data.DbType.String).Value = Name_First;
+                //command.Parameters.Add(@"Name_Second", System.Data.DbType.String).Value = Name_Second;
+                //command.Parameters.Add(@"Card", System.Data.DbType.Int32).Value = N_Card;
+                //command.Parameters.Add(@"Ballance", System.Data.DbType.String).Value = Ballance;
+                return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);            
+                throw;
+            }
+
         }
+
+
 	}
 }
 

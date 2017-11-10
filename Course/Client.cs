@@ -3,15 +3,14 @@
 
 namespace Course_APP
 {
-    class Client : CreditCard
+    public  class Client:CreditCard
     {	
-		
-        string First_name;
-        string Second_name;
-		protected void add(string First_Name, string Second_Name){
-			
-		}
-    }
+        public string First_name;
+        public string Second_name;
 
-		
+        public int give_card()
+        {
+            return Number_of_card;
+        }
+    }
 }

@@ -7,8 +7,9 @@ namespace Course_APP
     {
         static void Main(string[] args)
         {
-			Brand.show_logo();
-            Menu.start();
+            DataBase.Add_Client("Test_Name", "Second_name", 1488, 228);
+			//Brand.show_logo();
+   //         Menu.start();
         }
     }
 }

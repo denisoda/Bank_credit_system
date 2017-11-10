@@ -2,7 +2,7 @@
 
 namespace Course_APP
 {
-    public class CreditCard
+    public  class CreditCard
     {
         Random randINT = new Random();
         protected string Name_Of_Card = "VISA";
