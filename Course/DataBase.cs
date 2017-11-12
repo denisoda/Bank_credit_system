@@ -6,8 +6,7 @@ namespace Course_APP
     public static class DataBase
 	{	
 		static SQLiteConnection DB = new SQLiteConnection (@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
-        static SQLiteDataReader reader;
-
+        static public long Last_ID{get{return DB.LastInsertRowId;}}
 
         static void Connect()
         {
@@ -22,7 +21,7 @@ namespace Course_APP
         ///<summary>
         ///<para>Adds custumer's data to database</para>
         ///</summary>
-        public static bool Add_Client(string Name_First, string Name_Second,int Card,int Number, int Ballance = 100)
+        public static bool Add_Client(string Name_First, string Name_Second,string Card,int Number, int Ballance = 100)
         {
             try
             {
@@ -52,10 +51,8 @@ namespace Course_APP
                 Console.WriteLine(ex.Message);            
                 throw;
             }
-
         }
-
-
+        
 	}
 }
 
