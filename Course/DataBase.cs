@@ -19,7 +19,6 @@ namespace Course_APP
             DB.Close();
         }
 
-
         ///<summary>
         ///<para>Adds custumer's data to database</para>
         ///</summary>
@@ -29,10 +28,7 @@ namespace Course_APP
             {
                 using (DB)
                 {
-
                 SQLiteCommand command = new SQLiteCommand();
-
-                
 
                 command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);";
                 command.Connection = DB;
