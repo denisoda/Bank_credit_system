@@ -6,7 +6,8 @@ namespace Course_APP
     public static class DataBase
 	{	
 		static SQLiteConnection DB = new SQLiteConnection (@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
-        static public long Last_ID{get{return DB.LastInsertRowId;}}
+
+        public static long Last_ID{get;set;}
 
         static void Connect()
         {
@@ -17,6 +18,7 @@ namespace Course_APP
         {
             DB.Close();
         }
+
 
         ///<summary>
         ///<para>Adds custumer's data to database</para>
@@ -39,10 +41,10 @@ namespace Course_APP
                 command.Parameters.Add(new SQLiteParameter("@Card", Card));
                 command.Parameters.Add(new SQLiteParameter("@Number", Number));
                 command.Parameters.Add(new SQLiteParameter("@Ballance", Ballance));
-                Connect();
+                    Connect();
                 command.ExecuteScalar();
+                Last_ID = DB.LastInsertRowId;
                     Disconnect();
-
                     return true;
                 }
             }
@@ -51,8 +53,8 @@ namespace Course_APP
                 Console.WriteLine(ex.Message);            
                 throw;
             }
+
         }
-        
 	}
 }
 

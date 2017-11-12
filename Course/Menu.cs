@@ -18,6 +18,9 @@ namespace Course_APP
                 try
                 {
                 while (Console.ReadKey(true).Key != ConsoleKey.Escape) {
+                Console.Clear();
+                Console.WriteLine(Menu_Title);
+
                     switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                     {
                         case 49:
@@ -29,9 +32,11 @@ namespace Course_APP
                             string Seconde_Name = Console.ReadLine();
                             if(DataBase.Add_Client(First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card))
                             {
-                                Console.WriteLine("Client has added with NAME: {0} {1} Card {2} {3} ID {4}", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.Last_ID);
+                                Console.Clear();
+                                Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.Last_ID));
                             }
                             break;
+
                         case 50:
                             Console.WriteLine("Show ballance()");
                             break;
