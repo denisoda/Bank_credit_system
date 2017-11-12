@@ -44,10 +44,10 @@
     <Compile Include="DataBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataBase\costumers.db" />
     <None Include="packages.config" />
     <None Include="app.config" />
     <None Include="App.config" />
-    <None Include="DataBase\costumers" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

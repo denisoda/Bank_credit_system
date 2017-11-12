@@ -12,5 +12,10 @@ namespace Course_APP
         {
             return Number_of_card;
         }
+
+        bool add() {
+
+            return true;
+        }
     }
 }

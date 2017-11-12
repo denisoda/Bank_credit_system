@@ -6,9 +6,9 @@ namespace Course_APP
     {
         public static void start()
         {
-            string Menu_Title = @"  
+            string Menu_Title = @"             BANK SYSTEM
                                                   MENU:
-                                            1 - Add customer
+                                            1 - Client managment
                                             2 - Show ballance";
 
             Console.WriteLine(Menu_Title);
@@ -20,6 +20,7 @@ namespace Course_APP
                         case 49:
                             Console.Clear();
                             Console.WriteLine("Add user()");
+
 							
                             break;
                         case 50:
