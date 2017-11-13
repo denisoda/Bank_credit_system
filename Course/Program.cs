@@ -9,7 +9,6 @@ namespace Course_APP
         {
             Brand.show_logo();
             Menu.start();
-            Console.ReadKey();
         }
     }
 }
