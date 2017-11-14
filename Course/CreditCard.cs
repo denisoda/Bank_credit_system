@@ -13,8 +13,5 @@ namespace Course_APP
             int Number_of_card = this.Number_of_card;
             string Name_of_Card = this.Name_Of_Card;
         }
-
-
-        
 	}
 }
