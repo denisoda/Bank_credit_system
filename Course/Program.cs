@@ -7,9 +7,7 @@ namespace Course_APP
     {
         static void Main(string[] args)
         {
-            DataBase.Get_Ballance(12);
-            //Brand.show_logo();
-            //Menu.start();
+            Console.WriteLine(DataBase.Get_Ballance(12));
         }
     }
 }

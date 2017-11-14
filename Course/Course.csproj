@@ -37,6 +37,7 @@
     <Compile Include="Bank.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="CreditCard.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="My_Info.cs" />
     <Compile Include="Operation.cs" />

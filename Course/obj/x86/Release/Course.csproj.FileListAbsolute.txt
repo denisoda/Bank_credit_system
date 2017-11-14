@@ -1,0 +1,15 @@
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\Course.exe.config
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\Course.exe
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\Course.pdb
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\EntityFramework.dll
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\EntityFramework.SqlServer.dll
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\System.Data.SQLite.dll
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\System.Data.SQLite.EF6.dll
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\System.Data.SQLite.Linq.dll
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\EntityFramework.xml
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\EntityFramework.SqlServer.xml
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\System.Data.SQLite.xml
+F:\ilyab\Documents\Projects\Course\Course\bin\Release\System.Data.SQLite.dll.config
+F:\ilyab\Documents\Projects\Course\Course\obj\x86\Release\Course.csproj.CoreCompileInputs.cache
+F:\ilyab\Documents\Projects\Course\Course\obj\x86\Release\Course.exe
+F:\ilyab\Documents\Projects\Course\Course\obj\x86\Release\Course.pdb

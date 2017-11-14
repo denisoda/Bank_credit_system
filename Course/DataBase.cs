@@ -6,7 +6,9 @@ namespace Course_APP
     public static class DataBase
     {
         static SQLiteConnection DB = new SQLiteConnection(@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
+#pragma warning disable CS0169 // The field 'DataBase.read' is never used
         static SQLiteDataReader read;
+#pragma warning restore CS0169 // The field 'DataBase.read' is never used
 
         public static long Last_ID { get; set; }
 
