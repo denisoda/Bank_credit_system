@@ -6,6 +6,8 @@ namespace Course_APP
     {
         public static void start()
         {
+            My_Info.Brand.show_logo();
+
             string Menu_Title = @"             
                                                BANK SYSTEM
                                               
@@ -24,22 +26,50 @@ namespace Course_APP
                     switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                     {
                         case 49:
-                            CreditCard CARD = new CreditCard();
                             Console.Clear();
-                            Console.WriteLine("User name: ");
-                            string First_Name = Console.ReadLine();
-                            Console.WriteLine("Second name: ");
-                            string Seconde_Name = Console.ReadLine();
-                            if(DataBase.Add_Client(First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card))
+                            Console.WriteLine("1 - Add a client");
+                            Console.WriteLine("2 - Ballance by ID");
+                            switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                             {
-                                Console.Clear();
-                                Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.Last_ID));
+                                case 49:
+                                    CreditCard CARD = new CreditCard();
+                                    Console.Clear();
+                                    Console.WriteLine("User name: ");
+                                    string First_Name = Console.ReadLine();
+                                    Console.WriteLine("Second name: ");
+                                    string Seconde_Name = Console.ReadLine();
+                                    if (DataBase.Add_Client(First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card))
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.Last_ID));
+                                    }
+                                    break;
+
+                                case 50:
+                                    Console.Clear();
+                                    Console.WriteLine("Input costumer's ID : ");
+                                    try
+                                    {
+                                        long ID = Convert.ToInt64(Console.ReadLine()); 
+                                        Console.WriteLine( string.Format("Ballance of ID {0} is {1} {2}", ID, Convert.ToString(DataBase.Get_Ballance(ID))), Bank.Currency.Dollar);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Console.WriteLine(ex.Message);
+                                        throw;
+                                    }
+                                    break;
                             }
                             break;
+                                case 51:
 
-                        case 50:
-                            Console.WriteLine("Show ballance()");
-                            break;
+
+
+                            
+                                
+                            case 50:
+                                Console.WriteLine("Show ballance()");
+                                break;
                     }
                 }
             }

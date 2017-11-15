@@ -13,3 +13,4 @@ F:\ilyab\Documents\Projects\Course\Course\bin\Debug\EntityFramework.SqlServer.xm
 F:\ilyab\Documents\Projects\Course\Course\obj\x86\Debug\Course.csproj.CoreCompileInputs.cache
 F:\ilyab\Documents\Projects\Course\Course\obj\x86\Debug\Course.exe
 F:\ilyab\Documents\Projects\Course\Course\obj\x86\Debug\Course.pdb
+F:\ilyab\Documents\Projects\Course\Course\obj\x86\Debug\Course.csprojResolveAssemblyReference.cache

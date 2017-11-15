@@ -8,11 +8,11 @@ namespace My_Info
         {
             Console.WriteLine("The creater of the project is " + Creater);
         }
+
         public const string Creater = "ILYA DZERAZIAK";
 
-    public static void show_logo()
-    {
-            string title = @" 
+#region Ascii art
+        static string Title { get { return @" 
 
                         _____ _               _____                        _       _     
                        |_   _| |             |  __ \                      (_)     | |    
@@ -28,9 +28,12 @@ namespace My_Info
                                     |_|   |_|  \___/| |\___|\___|\__|                    
                                                    _/ |                                  
                                                   |__/                                 
-                                                                                                                                                   ";
+                                                                                                                                                   ";  } }
+#endregion
 
-            Console.WriteLine(title);
+        public static void show_logo()
+        {
+            Console.WriteLine(Title);
         }
     }
 }
