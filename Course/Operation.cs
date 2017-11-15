@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Course_APP
 {
-   static public class Operation
+   public static class Operation
     {
         const string dataFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
 
-        static public void Operations(string TYPE_OF_OPERATION, ref float Ballance, float Sum, ref List<object> Transaction)
+        public static void Operations(string TYPE_OF_OPERATION, ref float Ballance, float Sum, ref List<object> Transaction)
         {
             switch (TYPE_OF_OPERATION)
             {
@@ -27,7 +27,7 @@ namespace Course_APP
             }
         }
 
-        static public float withdraw(float Ballance, float Sum)
+        public static float withdraw(float Ballance, float Sum)
         {
             return Ballance -= Sum;
         }

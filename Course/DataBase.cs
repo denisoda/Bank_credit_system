@@ -7,9 +7,9 @@ namespace Course_APP
     {
         static SQLiteConnection DB = new SQLiteConnection(@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
 
-        public static long Last_ID { get; set; }
+        public static long LastID { get; set; }
 
-        static void Connect()
+        private static void Connect()
         {
             DB.Open();
         }
@@ -39,7 +39,7 @@ namespace Course_APP
                     command.Parameters.Add(new SQLiteParameter("@Ballance", Ballance));
                     Connect();
                     command.ExecuteScalar();
-                    Last_ID = DB.LastInsertRowId;
+                    LastID = DB.LastInsertRowId;
                     Disconnect();
                     return true;
                 }
@@ -52,7 +52,7 @@ namespace Course_APP
 
         }
 
-        public static Int64 Get_Ballance(long ID)
+        public static long GetBallance(long ID)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace Course_APP
         }
 
         
-        private static Int64 command(string Command)
+        private static long command(string Command)
         {
             try
             {
@@ -128,20 +128,20 @@ namespace Course_APP
 
         ///<summary>
         ///  <para>string operation arguments { 
-        ///  1- Withdraw
+        ///  1- withdraw
         ///  }
         ///  </para>
         ///</summary>
-        public static float Operations(string operation, Int64 ID, float amount)
+        public static float Operations(string operation, long ID, float amount)
         {
             switch (operation)
             {
                 case "withdraw":
-                    command();
-                    return  Operation.withdraw(Get_Ballance(ID), amount);
+   //    FIX             command("asd");
+                    return  Operation.withdraw(GetBallance(ID), amount);
                 case "transfer":
 
-                    return Operation.withdraw(Get_Ballance(ID), amount);
+                    return Operation.withdraw(GetBallance(ID), amount);
 
             }
 

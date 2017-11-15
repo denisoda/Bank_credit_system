@@ -41,7 +41,7 @@ namespace Course_APP
                                     if (DataBase.Add_Client(First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card))
                                     {
                                         Console.Clear();
-                                        Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.Last_ID));
+                                        Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.LastID));
                                     }
                                     break;
 
@@ -51,7 +51,7 @@ namespace Course_APP
                                     try
                                     {
                                         long ID = Convert.ToInt64(Console.ReadLine());
-                                        long Ballance = DataBase.Get_Ballance(ID);
+                                        long Ballance = DataBase.GetBallance(ID);
                                         Console.WriteLine( string.Format("Ballance of ID {0} is {1} {2}", ID, Convert.ToString(Ballance), (char)Bank.Currency.Dollar));
                                     }
                                     catch (Exception ex)
