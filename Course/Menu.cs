@@ -50,8 +50,9 @@ namespace Course_APP
                                     Console.WriteLine("Input costumer's ID : ");
                                     try
                                     {
-                                        long ID = Convert.ToInt64(Console.ReadLine()); 
-                                        Console.WriteLine( string.Format("Ballance of ID {0} is {1} {2}", ID, Convert.ToString(DataBase.Get_Ballance(ID))), Bank.Currency.Dollar);
+                                        long ID = Convert.ToInt64(Console.ReadLine());
+                                        long Ballance = DataBase.Get_Ballance(ID);
+                                        Console.WriteLine( string.Format("Ballance of ID {0} is {1} {2}", ID, Convert.ToString(Ballance), (char)Bank.Currency.Dollar));
                                     }
                                     catch (Exception ex)
                                     {
