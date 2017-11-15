@@ -7,7 +7,7 @@ namespace Course_APP
         public static void start()
         {
             My_Info.Brand.show_logo();
-
+#region Title
             string Menu_Title = @"             
                                                BANK SYSTEM
                                               
@@ -15,7 +15,7 @@ namespace Course_APP
                                                    MENU:
                                             1 - Client managment
                                             2 - Show ballance";
-
+#endregion
             Console.WriteLine(Menu_Title);
                 try
                 {
@@ -63,11 +63,7 @@ namespace Course_APP
                             }
                             break;
                                 case 51:
-
-
-
-                            
-                                
+   
                             case 50:
                                 Console.WriteLine("Show ballance()");
                                 break;
