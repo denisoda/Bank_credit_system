@@ -7,7 +7,8 @@ namespace Course_APP
     {
         static void Main(string[] args)
         {
-            Menu.start();
+
+            //Menu.start();
         }
     }
 }
