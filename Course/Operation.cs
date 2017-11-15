@@ -27,12 +27,12 @@ namespace Course_APP
             }
         }
 
-        static float withdraw(ref float Ballance, float Sum)
+        static public float withdraw(float Ballance, float Sum)
         {
             return Ballance -= Sum;
         }
 
-        static float transfer(ref float Ballance, float Sum)
+        static float transfer(float Ballance, float Sum)
         {
             return Ballance += Sum;
         }

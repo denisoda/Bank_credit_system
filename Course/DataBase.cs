@@ -89,6 +89,64 @@ namespace Course_APP
             }
 
         }
+
+        
+        private static Int64 command(string Command)
+        {
+            try
+            {
+                using (DB)
+                {
+                    Connect();
+
+                    string CommandText = string.Format(Command);
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(CommandText, DB))
+                    {
+                        using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                        {
+                            if (rdr.Read())
+                            {
+                                return rdr.GetInt64(0);
+                            }
+                            else
+                            {
+                                return 0;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+            }
+        }
+
+        ///<summary>
+        ///  <para>string operation arguments { 
+        ///  1- Withdraw
+        ///  }
+        ///  </para>
+        ///</summary>
+        public static float Operations(string operation, Int64 ID, float amount)
+        {
+            switch (operation)
+            {
+                case "withdraw":
+                    command();
+                    return  Operation.withdraw(Get_Ballance(ID), amount);
+                case "transfer":
+
+                    return Operation.withdraw(Get_Ballance(ID), amount);
+
+            }
+
+            return 0;
+        }
     }
 }
 

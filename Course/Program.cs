@@ -7,7 +7,7 @@ namespace Course_APP
     {
         static void Main(string[] args)
         {
-
+            DataBase.Operation()
             //Menu.start();
         }
     }
