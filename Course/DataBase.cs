@@ -9,16 +9,10 @@ namespace Course
 
         public static long LastId { get; set; }
 
-        private static void Connect()
-        {
-            Db.Open();
-        }
+        private static void Connect()=>Db.Open();
 
-        public static void Disconnect()
-        {
-            Db.Close();
-        }
-
+        public static void Disconnect() => Db.Close();
+        
         ///<summary>
         ///<para>Adds custumer's data to database</para>
         ///</summary>
