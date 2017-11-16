@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Course_APP
+namespace Course
 {
     public static class Menu
     {
-        public static void start()
+        public static void Start()
         {
-            My_Info.Brand.show_logo();
+            Brand.show_logo();
 #region Title
-            string Menu_Title = @"             
+            var menuTitle = @"             
                                                BANK SYSTEM
                                               
 
@@ -16,12 +16,12 @@ namespace Course_APP
                                             1 - Client managment
                                             2 - Show ballance";
 #endregion
-            Console.WriteLine(Menu_Title);
+            Console.WriteLine(menuTitle);
                 try
                 {
                 while (Console.ReadKey(true).Key != ConsoleKey.Escape) {
                 Console.Clear();
-                Console.WriteLine(Menu_Title);
+                Console.WriteLine(menuTitle);
 
                     switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                     {
@@ -29,19 +29,20 @@ namespace Course_APP
                             Console.Clear();
                             Console.WriteLine("1 - Add a client");
                             Console.WriteLine("2 - Ballance by ID");
+                            Console.WriteLine("3 - Show list of custumers");
                             switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                             {
                                 case 49:
-                                    CreditCard CARD = new CreditCard();
+                                    var card = new CreditCard();
                                     Console.Clear();
                                     Console.WriteLine("User name: ");
-                                    string First_Name = Console.ReadLine();
+                                    var firstName = Console.ReadLine();
                                     Console.WriteLine("Second name: ");
-                                    string Seconde_Name = Console.ReadLine();
-                                    if (DataBase.Add_Client(First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card))
+                                    var secondeName = Console.ReadLine();
+                                    if (DataBase.Add_Client(firstName, secondeName, card.NameOfCard, card.NumberOfCard))
                                     {
                                         Console.Clear();
-                                        Console.WriteLine(string.Format("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", First_Name, Seconde_Name, CARD.Name_Of_Card, CARD.Number_of_card, DataBase.LastID));
+                                        Console.WriteLine("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", firstName, secondeName, card.NameOfCard, card.NumberOfCard, DataBase.LastId);
                                     }
                                     break;
 
@@ -50,15 +51,20 @@ namespace Course_APP
                                     Console.WriteLine("Input costumer's ID : ");
                                     try
                                     {
-                                        long ID = Convert.ToInt64(Console.ReadLine());
-                                        long Ballance = DataBase.GetBallance(ID);
-                                        Console.WriteLine( string.Format("Ballance of ID {0} is {1} {2}", ID, Convert.ToString(Ballance), (char)Bank.Currency.Dollar));
+                                        var id = Convert.ToInt64(Console.ReadLine());
+                                        var ballance = DataBase.GetBallance(id);
+                                        Console.WriteLine("Ballance of ID {0} is {1} {2}", id, Convert.ToString(ballance), (char)Bank.Currency.Dollar);
                                     }
                                     catch (Exception ex)
                                     {
                                         Console.WriteLine(ex.Message);
                                         throw;
                                     }
+                                    break;
+
+                                case 51:
+                                    Console.Clear();
+
                                     break;
                             }
                             break;

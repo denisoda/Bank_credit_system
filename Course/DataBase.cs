@@ -1,45 +1,46 @@
 ﻿using System;
 using System.Data.SQLite;
 
-namespace Course_APP
+namespace Course
 {
     public static class DataBase
     {
-        static SQLiteConnection DB = new SQLiteConnection(@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
+        private static readonly SQLiteConnection Db = new SQLiteConnection(@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
 
-        public static long LastID { get; set; }
+        public static long LastId { get; set; }
 
         private static void Connect()
         {
-            DB.Open();
+            Db.Open();
         }
 
         public static void Disconnect()
         {
-            DB.Close();
+            Db.Close();
         }
 
         ///<summary>
         ///<para>Adds custumer's data to database</para>
         ///</summary>
-        public static bool Add_Client(string Name_First, string Name_Second, string Card, int Number, int Ballance = 100)
+        public static bool Add_Client(string nameFirst, string nameSecond, string card, int number, int ballance = 100)
         {
             try
             {
-                using (DB)
+                using (Db)
                 {
-                    SQLiteCommand command = new SQLiteCommand();
-
-                    command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);";
-                    command.Connection = DB;
-                    command.Parameters.Add(new SQLiteParameter("@Name_First", Name_First));
-                    command.Parameters.Add(new SQLiteParameter("@Name_Second", Name_First));
-                    command.Parameters.Add(new SQLiteParameter("@Card", Card));
-                    command.Parameters.Add(new SQLiteParameter("@Number", Number));
-                    command.Parameters.Add(new SQLiteParameter("@Ballance", Ballance));
+                    var command = new SQLiteCommand
+                    {
+                        CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);",
+                        Connection = Db
+                    };
+                    command.Parameters.Add(new SQLiteParameter("@Name_First", nameFirst));
+                    command.Parameters.Add(new SQLiteParameter("@Name_Second", nameFirst));
+                    command.Parameters.Add(new SQLiteParameter("@Card", card));
+                    command.Parameters.Add(new SQLiteParameter("@Number", number));
+                    command.Parameters.Add(new SQLiteParameter("@Ballance", ballance));
                     Connect();
                     command.ExecuteScalar();
-                    LastID = DB.LastInsertRowId;
+                    LastId = Db.LastInsertRowId;
                     Disconnect();
                     return true;
                 }
@@ -52,19 +53,19 @@ namespace Course_APP
 
         }
 
-        public static long GetBallance(long ID)
+        public static long GetBallance(long id)
         {
             try
             {
-                using (DB)
+                using (Db)
                 {
                     Connect();
 
-                    string CommandText = string.Format("SELECT Ballance FROM Costumers WHERE id = {0}", ID);
+                    var commandText = string.Format("SELECT Ballance FROM Costumers WHERE id = {0}", id);
 
-                    using (SQLiteCommand cmd = new SQLiteCommand(CommandText, DB))
+                    using (var cmd = new SQLiteCommand(commandText, Db))
                     {
-                        using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                        using (var rdr = cmd.ExecuteReader())
                         {
                             if (rdr.Read())
                             {
@@ -90,28 +91,32 @@ namespace Course_APP
 
         }
 
+        private static string Show()
+        {
+                return Convert.ToString(CommandReturn("SELECT * FROM Costumers"));
+        }
         
-        private static long command(string Command)
+        private static long CommandReturn(string command)
         {
             try
             {
-                using (DB)
+                using (Db)
                 {
                     Connect();
 
-                    string CommandText = string.Format(Command);
+                    var commandText = string.Format(command);
 
-                    using (SQLiteCommand cmd = new SQLiteCommand(CommandText, DB))
+                    using (var cmd = new SQLiteCommand(commandText, Db))
                     {
-                        using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                        using (var rdr = cmd.ExecuteReader())
                         {
                             if (rdr.Read())
                             {
-                                return rdr.GetInt64(0);
+                                
                             }
-                            else
+                            while (rdr.Read())
                             {
-                                return 0;
+                                return rdr.GetInt64(0);
                             }
                         }
 
@@ -132,16 +137,16 @@ namespace Course_APP
         ///  }
         ///  </para>
         ///</summary>
-        public static float Operations(string operation, long ID, float amount)
+        public static float Operations(string operation, long id, float amount)
         {
             switch (operation)
             {
                 case "withdraw":
    //    FIX             command("asd");
-                    return  Operation.withdraw(GetBallance(ID), amount);
+                    return  Operation.Withdraw(GetBallance(id), amount);
                 case "transfer":
 
-                    return Operation.withdraw(GetBallance(ID), amount);
+                    return Operation.Withdraw(GetBallance(id), amount);
 
             }
 

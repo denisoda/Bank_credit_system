@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace My_Info
+namespace Course
 {
      public static class Brand
     {
@@ -12,7 +12,8 @@ namespace My_Info
         public const string Creater = "ILYA DZERAZIAK";
 
 #region Ascii art
-        static string Title { get { return @" 
+
+        private static string Title { get { return @" 
 
                         _____ _               _____                        _       _     
                        |_   _| |             |  __ \                      (_)     | |    

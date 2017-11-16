@@ -1,9 +1,9 @@
-﻿namespace Course_APP
+﻿namespace Course
 {
     public static class Bank
     {
-        public static string NAME { get { return "DZBank"; } }
-        public static long number_of_clients = DataBase.LastID;
+        public static string Name { get { return "DZBank"; } }
+        public static long NumberOfClients = DataBase.LastId;
 
         public enum Currency
         {

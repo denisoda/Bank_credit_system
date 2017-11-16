@@ -1,45 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Course_APP
+namespace Course
 {
    public static class Operation
     {
-        const string dataFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
+        private const string DataFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
 
-        public static void Operations(string TYPE_OF_OPERATION, ref float Ballance, float Sum, ref List<object> Transaction)
+        public static void Operations(string typeOfOperation, ref float ballance, float sum, ref List<object> transaction)
         {
-            switch (TYPE_OF_OPERATION)
+            switch (typeOfOperation)
             {
                 case "withdraw":
-                    withdraw(ref Ballance, Sum);
-                    Transaction.Add(DateTime.Now + " : " + "- " + Sum + "Ballance: " + Ballance);
+                    Withdraw(ballance, sum);
+                    transaction.Add(DateTime.Now + " : " + "- " + sum + "Ballance: " + ballance);
                     break;
 
                 case "transfer":
-                    transfer(ref Ballance, Sum);
-                    Transaction.Add(DateTime.Now + " : " + "+ " + Sum + "Ballance: " + Ballance);
+                    Transfer(ballance, sum);
+                    transaction.Add(DateTime.Now + " : " + "+ " + sum + "Ballance: " + ballance);
                     break;
 
                 case "ballance":
-                    Transaction.Add(DateTime.Now + " : " + "Costumer checket out ballance" + Ballance);
+                    transaction.Add(DateTime.Now + " : " + "Costumer checket out ballance" + ballance);
                     break;
             }
         }
 
-        public static float withdraw(float Ballance, float Sum)
+        public static float Withdraw(float ballance, float sum)
         {
-            return Ballance -= Sum;
+            return ballance -= sum;
         }
 
-        static float transfer(float Ballance, float Sum)
+        private static float Transfer(float ballance, float sum)
         {
-            return Ballance += Sum;
+            return ballance += sum;
         }
 
-        static float show_ballance(ref float Ballance, float Sum)
+        private static float show_ballance(ref float ballance, float sum)
         {
-            return Ballance;
+            return ballance;
         }
 
     }

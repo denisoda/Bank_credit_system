@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace Course_APP
+namespace Course
 {
     public  class CreditCard
     {
-        Random randINT = new Random();
-        public string Name_Of_Card = "VISA";
-        public int Number_of_card { get { return randINT.Next(100000000, 999999999); } }
+        private readonly Random _randInt = new Random();
+        public string NameOfCard = "VISA";
+        public int NumberOfCard { get { return _randInt.Next(100000000, 999999999); } }
 
         public CreditCard()
         {
-            int Number_of_card = this.Number_of_card;
-            string Name_of_Card = this.Name_Of_Card;
+            var numberOfCard = this.NumberOfCard;
+            var nameOfCard = this.NameOfCard;
         }
 	}
 }

@@ -1,19 +1,16 @@
-﻿using System;
-
-
-namespace Course_APP
+﻿namespace Course
 {
     public  class Client:CreditCard
     {	
-        public string First_name;
-        public string Second_name;
+        public string FirstName;
+        public string SecondName;
 
         public int give_card()
         {
-            return Number_of_card;
+            return NumberOfCard;
         }
 
-        bool add() {
+        private bool Add() {
 
             return true;
         }

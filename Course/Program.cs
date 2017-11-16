@@ -1,14 +1,11 @@
-﻿using System;
-using My_Info;
-
-namespace Course_APP
+﻿namespace Course
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
            // DataBase.Operation("withdraw");
-            //Menu.start();
+            Menu.Start();
         }
     }
 }
