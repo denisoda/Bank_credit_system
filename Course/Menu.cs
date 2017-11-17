@@ -6,6 +6,8 @@ namespace Course
     {
         public static void Start()
         {
+            int m = 1;
+
             Brand.show_logo();
 #region Title
             var menuTitle = @"             
@@ -20,16 +22,21 @@ namespace Course
                 try
                 {
                 while (Console.ReadKey(true).Key != ConsoleKey.Escape) {
-                Console.Clear();
-                Console.WriteLine(menuTitle);
+
+                    Console.Clear();
+                    Console.WriteLine(menuTitle);
 
                     switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                     {
                         case 49:
                             Console.Clear();
-                            Console.WriteLine("1 - Add a client");
-                            Console.WriteLine("2 - Ballance by ID");
-                            Console.WriteLine("3 - Show list of custumers");
+
+
+                            Console.WriteLine($"{m++} - Add a client");
+                            Console.WriteLine($"{m++} - Ballance by ID");
+                            Console.WriteLine($"{m++} - Show list of custumers");
+
+
                             switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
                             {
                                 case 49:
@@ -68,11 +75,11 @@ namespace Course
                                     break;
                             }
                             break;
-                                case 51:
+                        case 51:
    
-                            case 50:
-                                Console.WriteLine("Show ballance()");
-                                break;
+                        case 50:
+                            Console.WriteLine("Show ballance()");
+                            break;
                     }
                 }
             }

@@ -1,17 +1,19 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Data.SQLite;
 
 namespace Course
 {
     public static class DataBase
     {
-        private static readonly SQLiteConnection Db = new SQLiteConnection(@"Data Source = F:\ilyab\Documents\Projects\Course\Course\DataBase\costumers.db");
+
+        private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataBase\costumers.db")}");
 
         public static long LastId { get; set; }
 
         private static void Connect()=>Db.Open();
 
-        public static void Disconnect() => Db.Close();
+        public static void Disconnect()=>Db.Close();
         
         ///<summary>
         ///<para>Adds custumer's data to database</para>
@@ -22,11 +24,13 @@ namespace Course
             {
                 using (Db)
                 {
-                    var command = new SQLiteCommand
-                    {
-                        CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);",
-                        Connection = Db
-                    };
+
+                    SQLiteCommand command = new SQLiteCommand();
+
+
+
+                    command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);";
+                    command.Connection = Db;
                     command.Parameters.Add(new SQLiteParameter("@Name_First", nameFirst));
                     command.Parameters.Add(new SQLiteParameter("@Name_Second", nameFirst));
                     command.Parameters.Add(new SQLiteParameter("@Card", card));
@@ -90,7 +94,7 @@ namespace Course
                 return Convert.ToString(CommandReturn("SELECT * FROM Costumers"));
         }
         
-        private static long CommandReturn(string command)
+        public static long CommandReturn(string command)
         {
             try
             {
@@ -106,12 +110,16 @@ namespace Course
                         {
                             if (rdr.Read())
                             {
-                                
-                            }
-                            while (rdr.Read())
+                              while (rdr.Read())
                             {
                                 return rdr.GetInt64(0);
+                            }  
                             }
+                            else
+                            {
+                                return 0;
+                            }
+                            return 0;
                         }
 
                     }
@@ -136,7 +144,6 @@ namespace Course
             switch (operation)
             {
                 case "withdraw":
-   //    FIX             command("asd");
                     return  Operation.Withdraw(GetBallance(id), amount);
                 case "transfer":
 

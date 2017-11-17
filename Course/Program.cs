@@ -1,10 +1,13 @@
-﻿namespace Course
+﻿using System;
+using System.IO;
+
+namespace Course
 {
     internal class Program
     {
         private static void Main(string[] args)
-        {
-           // DataBase.Operation("withdraw");
+        {   
+            //Console.WriteLine(DataBase.CommandReturn("SELECT * FROM Costumers"));
             Menu.Start();
         }
     }

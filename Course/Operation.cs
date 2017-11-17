@@ -7,22 +7,19 @@ namespace Course
     {
         private const string DataFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
 
-        public static void Operations(string typeOfOperation, ref float ballance, float sum, ref List<object> transaction)
+        public static void Operations(string typeOfOperation, ref float ballance, float sum)
         {
             switch (typeOfOperation)
             {
                 case "withdraw":
                     Withdraw(ballance, sum);
-                    transaction.Add(DateTime.Now + " : " + "- " + sum + "Ballance: " + ballance);
                     break;
 
                 case "transfer":
                     Transfer(ballance, sum);
-                    transaction.Add(DateTime.Now + " : " + "+ " + sum + "Ballance: " + ballance);
                     break;
 
                 case "ballance":
-                    transaction.Add(DateTime.Now + " : " + "Costumer checket out ballance" + ballance);
                     break;
             }
         }
