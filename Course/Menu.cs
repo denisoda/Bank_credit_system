@@ -70,7 +70,7 @@ namespace Course
                                     break;
 
                                 case 51:
-                                    Console.Clear();
+                                    DataBase.Show();
 
                                     break;
                             }
