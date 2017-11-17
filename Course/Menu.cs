@@ -6,7 +6,6 @@ namespace Course
     {
         public static void Start()
         {
-            int m = 1;
 
             Brand.show_logo();
 #region Title
@@ -31,10 +30,11 @@ namespace Course
                         case 49:
                             Console.Clear();
 
-
-                            Console.WriteLine($"{m++} - Add a client");
-                            Console.WriteLine($"{m++} - Ballance by ID");
-                            Console.WriteLine($"{m++} - Show list of custumers");
+                                int m = 1;
+                                Console.WriteLine($"{m++} - Add a client");
+                                Console.WriteLine($"{m++} - Ballance by ID");
+                                Console.WriteLine($"{m++} - Show list of custumers");   
+                            
 
 
                             switch (Convert.ToInt32(Console.ReadKey(true).KeyChar))
@@ -70,6 +70,7 @@ namespace Course
                                     break;
 
                                 case 51:
+                                    Console.Clear();
                                     DataBase.Show();
 
                                     break;

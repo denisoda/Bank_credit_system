@@ -13,7 +13,7 @@ namespace Course
 
 #region Ascii art
 
-        private static string Title { get { return @" 
+        private static string Title => @" 
 
                         _____ _               _____                        _       _     
                        |_   _| |             |  __ \                      (_)     | |    
@@ -29,8 +29,9 @@ namespace Course
                                     |_|   |_|  \___/| |\___|\___|\__|                    
                                                    _/ |                                  
                                                   |__/                                 
-                                                                                                                                                   ";  } }
-#endregion
+                                                                                                                                                   ";
+
+        #endregion
 
         public static void show_logo()
         {

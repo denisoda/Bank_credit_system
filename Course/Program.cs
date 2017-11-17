@@ -8,9 +8,7 @@ namespace Course
         private static void Main(string[] args)
         {
 
-            Console.WriteLine(DataBase.Show());
-            //Console.WriteLine(DataBase.CommandReturn("SELECT * FROM Costumers"));
-            //Menu.Start();
+            Menu.Start();
         }
     }
 }
