@@ -64,6 +64,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="costumers.db" />
     <None Include="packages.config" />
     <None Include="app.config" />
     <None Include="App.config" />
