@@ -1,14 +1,14 @@
 ﻿using System;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SQLite;
 
 namespace Course
 {
     public static class DataBase
     {
-        private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataBase\costumers.db")}");
+
+        private static readonly SQLiteConnection Db = new SQLiteConnection(@"file: DataBase\costumers.db");
+        //private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataBase\costumers")}"); relative
 
         public static long LastId { get; set; }
 
@@ -25,13 +25,11 @@ namespace Course
             {
                 using (Db)
                 {
-
-                    SQLiteCommand command = new SQLiteCommand();
-
-
-
-                    command.CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);";
-                    command.Connection = Db;
+                    var command = new SQLiteCommand
+                    {
+                        CommandText = "INSERT INTO Costumers(Name_First, Name_Second, Card, Number, Ballance) VALUES (@Name_First, @Name_Second, @Card, @Number, @Ballance);",
+                        Connection = Db
+                    };
                     command.Parameters.Add(new SQLiteParameter("@Name_First", nameFirst));
                     command.Parameters.Add(new SQLiteParameter("@Name_Second", nameFirst));
                     command.Parameters.Add(new SQLiteParameter("@Card", card));
@@ -97,7 +95,6 @@ namespace Course
         
         public static long CommandReturn(string command)
         {
-
             try
             {
                 using (Db)
@@ -112,12 +109,13 @@ namespace Course
                         {
                             while (rdr.Read())
                             {
-                              Console.WriteLine( $"ID: {rdr[0]} Name: {rdr[1]} {rdr[2]} Card: {rdr[3]} Number: {rdr[4]} Ballance: {rdr[5]}{(char)Bank.Currency.Dollar}");
-                                
+                                Console.WriteLine($"ID: {rdr[0]} Name: {rdr[1]} {rdr[2]} Card: {rdr[3]} Number: {rdr[4]} Ballance: {rdr[5]}{(char)Bank.Currency.Dollar}");
+
                             }
-                             
+
                             return 0;
                         }
+
                     }
 
                 }
