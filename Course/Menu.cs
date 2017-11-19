@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace Course
 {
     public static class Menu
     {
         private static long id;
-        private static int m = 1;
-        private static int sum;
         private static long ballance;
+        private static float sum;
 
         public static void Start()
         {
@@ -33,12 +33,13 @@ namespace Course
                     {
                         case 49:
                             Console.Clear();
+                                int m = 1;
 
-                                
                                 Console.WriteLine($"{m++} - Add a client");
                                 Console.WriteLine($"{m++} - Ballance by ID");
                                 Console.WriteLine($"{m++} - Show list of custumers");
                                 Console.WriteLine($"{m++} - Withdraw money");
+                                Console.WriteLine($"{m++} - Add money");
                             
 
 
@@ -65,6 +66,7 @@ namespace Course
                                     {
                                         id = Convert.ToInt64(Console.ReadLine());
                                         ballance = DataBase.GetBallance(id);
+                                        Console.Clear();
                                         Console.WriteLine("Ballance of ID {0} is {1}{2}", id, Convert.ToString(ballance), (char)Bank.Currency.Dollar);
                                     }
                                     catch (Exception ex)
@@ -79,11 +81,32 @@ namespace Course
                                     DataBase.Show();
 
                                     break;
+
                                 case 52:
+                                    Console.Clear();
                                     Console.WriteLine("Input costumer's ID : ");
                                     id = Convert.ToInt64(Console.ReadLine());
+                                    Console.WriteLine("Sum for withdraw:");
                                     float sum = float.Parse(Console.ReadLine());
-                                    DataBase.Operations("withdraw", id, sum);
+
+                                    if (DataBase.Operations("withdraw", id, sum))
+                                    {
+                                        Console.WriteLine($"Success! Ballance is {DataBase.GetBallance(id)}{(char)Bank.Currency.Dollar} ");
+                                    }
+                                    break;
+
+                                case 53:
+                                    Console.Clear();
+                                    Console.WriteLine("Input costumer's ID : ");
+                                    id = Convert.ToInt64(Console.ReadLine());
+                                    Console.WriteLine("Sum for transfer:");
+                                    sum = float.Parse(Console.ReadLine());
+
+                                    if (DataBase.Operations("transfer", id, sum))
+                                    {
+                                        Console.WriteLine($"Success! Ballance is {DataBase.GetBallance(id)}{(char)Bank.Currency.Dollar} ");    
+                                    }
+
                                     break;
                             }
                             break;

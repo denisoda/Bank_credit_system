@@ -1,13 +1,15 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Data;
 using System.Data.SQLite;
 
 namespace Course
 {
     public static class DataBase
     {
-
-        private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\DataBase\costumers.db")}"); 
+        private static readonly string Path =$"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\DataBase\costumers.db")}";
+            
+        private static  SQLiteConnection Db = new SQLiteConnection(Path); 
 
         public static long LastId { get; set; }
 
@@ -53,11 +55,17 @@ namespace Course
         {
             try
             {
-                using (Db)
+                
+                using (Db = new SQLiteConnection(Path))
                 {
+                    if ((Db.State & ConnectionState.Open) != 0)
+                    {
+                      Disconnect();
+                    }
+                        
                     Connect();
 
-                    var commandText = string.Format("SELECT Ballance FROM Costumers WHERE id = {0}", id);
+                    var commandText = $"SELECT Ballance FROM Costumers WHERE id = {id}";
 
                     using (var cmd = new SQLiteCommand(commandText, Db))
                     {
@@ -67,11 +75,8 @@ namespace Course
                             {
                                 return rdr.GetInt64(0);
                             }
-                            else
-                            {
-                                return 0;
-                            }
-                          
+
+                          return 0;
                             
                         }
 
@@ -91,7 +96,7 @@ namespace Course
         {
             try
             {
-                using (Db)
+                using (Db = new SQLiteConnection(Path))
                 {
                     Connect();
 
@@ -100,6 +105,7 @@ namespace Course
                     using (var cmd = new SQLiteCommand(commandText, Db))
                     {
                         cmd.ExecuteScalar();
+                        Disconnect();
                         return true;
 
                     }
@@ -149,11 +155,12 @@ namespace Course
 
         ///<summary>
         ///  <para>string operation arguments { 
-        ///  1- withdraw
+        ///  1- "withdraw"
+        ///  2- "trasfer"
         ///  }
         ///  </para>
         ///</summary>
-        public static float Operations(string operation, long id, float amount)
+        public static bool Operations(string operation, long id, float amount)
         {
             switch (operation)
             {
@@ -161,17 +168,22 @@ namespace Course
 
                     if (Command($"UPDATE Costumers SET Ballance = Ballance - {amount} WHERE id = {id}"))
                     {
-                        return GetBallance(id);
+                        return true;
                     }
                     break;
 
                 case "transfer":
 
-                    return Operation.Withdraw(GetBallance(id), amount);
+                    if (Command($"UPDATE Costumers SET Ballance = Ballance + {amount} WHERE id = {id}"))
+                    {
+                        return true;
+                    }
+                    
+                    break;
 
             }
 
-            return 0;
+            return false;
         }
         
     }
