@@ -87,12 +87,9 @@ namespace Course
 
         }
 
-        public static string Show()
-        {
-                return Convert.ToString(CommandReturn("SELECT * FROM Costumers"));
-        }
         
-        public static long CommandReturn(string command)
+        
+        public static long Show(string command = "SELECT* FROM Costumers")
         {
             try
             {
