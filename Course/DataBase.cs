@@ -7,8 +7,7 @@ namespace Course
     public static class DataBase
     {
 
-        private static readonly SQLiteConnection Db = new SQLiteConnection(@"file: DataBase\costumers.db");
-        //private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataBase\costumers")}"); relative
+        private static readonly SQLiteConnection Db = new SQLiteConnection($"Data Source = {System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\DataBase\costumers.db")}"); 
 
         public static long LastId { get; set; }
 
