@@ -88,7 +88,6 @@ namespace Course
         }
 
         
-        
         public static long Show(string command = "SELECT* FROM Costumers")
         {
             try
