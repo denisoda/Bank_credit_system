@@ -87,6 +87,31 @@ namespace Course
 
         }
 
+        private static bool Command(string command)
+        {
+            try
+            {
+                using (Db)
+                {
+                    Connect();
+
+                    var commandText = string.Format(command);
+
+                    using (var cmd = new SQLiteCommand(commandText, Db))
+                    {
+                        cmd.ExecuteScalar();
+                        return true;
+
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
         
         public static long Show(string command = "SELECT* FROM Costumers")
         {
@@ -104,7 +129,7 @@ namespace Course
                         {
                             while (rdr.Read())
                             {
-                                Console.WriteLine($"ID: {rdr[0]} Name: {rdr[1]} {rdr[2]} Card: {rdr[3]} Number: {rdr[4]} Ballance: {rdr[5]}{(char)Bank.Currency.Dollar}");
+                                Console.WriteLine($"ID: {rdr[0]} Name: {rdr[1]} {rdr[2]} Card: '{rdr[3]}' Number: {rdr[4]} Ballance: {rdr[5]}{(char)Bank.Currency.Dollar}");
 
                             }
 
@@ -133,7 +158,13 @@ namespace Course
             switch (operation)
             {
                 case "withdraw":
-                    return  Operation.Withdraw(GetBallance(id), amount);
+
+                    if (Command($"UPDATE Costumers SET Ballance = Ballance - {amount} WHERE id = {id}"))
+                    {
+                        return GetBallance(id);
+                    }
+                    break;
+
                 case "transfer":
 
                     return Operation.Withdraw(GetBallance(id), amount);
@@ -142,6 +173,7 @@ namespace Course
 
             return 0;
         }
+        
     }
 }
 

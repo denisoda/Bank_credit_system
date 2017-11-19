@@ -4,9 +4,13 @@ namespace Course
 {
     public static class Menu
     {
+        private static long id;
+        private static int m = 1;
+        private static int sum;
+        private static long ballance;
+
         public static void Start()
         {
-
             Brand.show_logo();
 #region Title
             var menuTitle = @"             
@@ -30,10 +34,11 @@ namespace Course
                         case 49:
                             Console.Clear();
 
-                                int m = 1;
+                                
                                 Console.WriteLine($"{m++} - Add a client");
                                 Console.WriteLine($"{m++} - Ballance by ID");
-                                Console.WriteLine($"{m++} - Show list of custumers");   
+                                Console.WriteLine($"{m++} - Show list of custumers");
+                                Console.WriteLine($"{m++} - Withdraw money");
                             
 
 
@@ -58,9 +63,9 @@ namespace Course
                                     Console.WriteLine("Input costumer's ID : ");
                                     try
                                     {
-                                        var id = Convert.ToInt64(Console.ReadLine());
-                                        var ballance = DataBase.GetBallance(id);
-                                        Console.WriteLine("Ballance of ID {0} is {1} {2}", id, Convert.ToString(ballance), (char)Bank.Currency.Dollar);
+                                        id = Convert.ToInt64(Console.ReadLine());
+                                        ballance = DataBase.GetBallance(id);
+                                        Console.WriteLine("Ballance of ID {0} is {1}{2}", id, Convert.ToString(ballance), (char)Bank.Currency.Dollar);
                                     }
                                     catch (Exception ex)
                                     {
@@ -73,6 +78,12 @@ namespace Course
                                     Console.Clear();
                                     DataBase.Show();
 
+                                    break;
+                                case 52:
+                                    Console.WriteLine("Input costumer's ID : ");
+                                    id = Convert.ToInt64(Console.ReadLine());
+                                    float sum = float.Parse(Console.ReadLine());
+                                    DataBase.Operations("withdraw", id, sum);
                                     break;
                             }
                             break;
