@@ -71,13 +71,7 @@ namespace Course
                     {
                         using (var rdr = cmd.ExecuteReader())
                         {
-                            if (rdr.Read())
-                            {
-                                return rdr.GetInt64(0);
-                            }
-
-                          return 0;
-                            
+                            return rdr.Read() ? rdr.GetInt64(0) : 0;
                         }
 
                     }

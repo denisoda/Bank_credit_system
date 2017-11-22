@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Dynamic;
+using System.Threading;
+
 
 namespace Course
 {
     public static class Menu
-    {
+    {   
         private static long id;
         private static long ballance;
         private static float sum;
@@ -52,11 +53,15 @@ namespace Course
                                     var firstName = Console.ReadLine();
                                     Console.WriteLine("Second name: ");
                                     var secondeName = Console.ReadLine();
-                                    if (DataBase.Add_Client(firstName, secondeName, card.NameOfCard, card.NumberOfCard))
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine("Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ", firstName, secondeName, card.NameOfCard, card.NumberOfCard, DataBase.LastId);
-                                    }
+                                        if (DataBase.Add_Client(firstName, secondeName, card.NameOfCard,
+                                            card.NumberOfCard))
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine(
+                                                "Client has added with NAME: {0} {1}, Card Name: '{2}', Number of card: '{3}', ID: {4} ",
+                                                firstName, secondeName, card.NameOfCard, card.NumberOfCard,
+                                                DataBase.LastId);
+                                        }
                                     break;
 
                                 case 50:
